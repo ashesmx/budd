@@ -452,7 +452,7 @@ describe('when Budd wakes a mailbox', () => {
     });
     await send();
     budd.wakeUps.answer = (req) => {
-      if (req.url.includes('hooks.example.com')) throw new Error('boom');
+      if (new URL(req.url).host === 'hooks.example.com') throw new Error('boom');
       return { ok: true, status: 'HTTP 202' };
     };
     await budd.sweep();
