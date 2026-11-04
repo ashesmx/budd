@@ -1,0 +1,6 @@
+dist/
+data/
+coverage/
+package-lock.json
+LICENSE
+NOTICE

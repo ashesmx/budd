@@ -1,0 +1,60 @@
+{
+  "name": "budd",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashesmx/budd.git"
+  },
+  "homepage": "https://github.com/ashesmx/budd#readme",
+  "bugs": "https://github.com/ashesmx/budd/issues",
+  "private": true,
+  "description": "An MCP message bus for AI agents",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24.11.0"
+  },
+  "bin": {
+    "budd": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node -e \"const fs = require('node:fs'); fs.rmSync('dist/ui/logo', { recursive: true, force: true }); fs.cpSync('src/ui/logo', 'dist/ui/logo', { recursive: true })\"",
+    "start": "npm run build && node dist/main.js",
+    "dev": "tsx watch src/main.ts",
+    "budd": "npm run build --silent && node dist/cli.js",
+    "backup": "npm run build && node dist/cli.js backup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "smoke": "bash scripts/smoke.sh"
+  },
+  "dependencies": {
+    "@hono/node-server": "2.1.5",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "better-sqlite3": "13.0.3",
+    "hono": "4.13.13",
+    "ulid": "3.0.2",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/better-sqlite3": "9.6.0",
+    "@types/node": "24.19.2",
+    "eslint": "10.13.0",
+    "eslint-config-prettier": "10.1.8",
+    "prettier": "3.9.10",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.0",
+    "vitest": "5.0.5"
+  },
+  "allowScripts": {
+    "better-sqlite3@13.0.3": false,
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": false
+  }
+}

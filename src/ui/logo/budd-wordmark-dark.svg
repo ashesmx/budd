@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="188" height="64" viewBox="4 -2 188 64" role="img" aria-label="Budd">
+  <title>Budd</title>
+  <g fill="none" stroke="#e6e8eb" stroke-width="9" stroke-linecap="round">
+    <path d="M10 4v52"/>
+    <circle cx="26" cy="40" r="16"/>
+    <path d="M58 24v16a16 16 0 0 0 32 0M90 24v32"/>
+    <circle cx="122" cy="40" r="16"/>
+    <path d="M138 4v52"/>
+    <circle cx="170" cy="40" r="16"/>
+    <path d="M186 17v39"/>
+  </g>
+  <g fill="none" stroke="#7ea2ff" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M138 4H175L186 17" stroke-width="9"/>
+    <path d="M147 15H179" stroke-width="5"/>
+  </g>
+</svg>

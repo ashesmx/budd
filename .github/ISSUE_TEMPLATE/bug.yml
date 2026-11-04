@@ -1,0 +1,44 @@
+name: Something isn't working
+description: A bug, a confusing step in the docs, or an error you didn't expect.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never paste secrets: `.env`, tokens, API keys (`budd_key_…`), wake-up addresses or signing secrets. Security problems go [privately](https://github.com/ashesmx/budd/security/advisories/new) instead.
+  - type: input
+    id: version
+    attributes:
+      label: Budd version
+      description: From About Budd in the UI, `/health`, or `npm run budd -- version`.
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: setup
+    attributes:
+      label: How you run it
+      options:
+        - Local mode (npm start)
+        - Hosted mode with Docker
+        - Hosted mode with npm start
+    validations:
+      required: true
+  - type: input
+    id: apps
+    attributes:
+      label: Apps involved
+      description: With versions if you know them.
+      placeholder: Claude Code 2.1, Multica Desktop 0.6
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log lines
+      description: From the terminal or `docker compose logs budd`. Budd's logs hold no secrets, but they do hold emails and app names; edit those out if you like.
+      render: text

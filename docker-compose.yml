@@ -1,0 +1,37 @@
+# Hosted mode only. Local mode runs with `npm start` (docs/adr/0002).
+# Single instance only: do not scale this service (see docs/operating.md).
+services:
+  budd:
+    build: .
+    image: budd:local
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      BUDD_MODE: hosted
+      HOST: 0.0.0.0
+      PORT: '8787'
+      DATA_DIR: /data
+    # Published on host loopback only; expose it through a TLS reverse proxy or
+    # tunnel (Caddy, nginx, Cloudflare Tunnel...). Local changes go in
+    # docker-compose.override.yml.
+    ports:
+      - '127.0.0.1:${BUDD_PORT:-8787}:8787'
+    volumes:
+      - budd-data:/data
+    # Hardening at no cost: Budd writes only to /data, needs no Linux
+    # capabilities, and never needs to gain privileges.
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    # Every refused request is logged; keep the logs from filling the disk.
+    logging:
+      driver: json-file # max-size/max-file need it; some hosts default to journald
+      options:
+        max-size: '10m'
+        max-file: '3'
+
+volumes:
+  budd-data:

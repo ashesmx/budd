@@ -1,0 +1,14 @@
+name: An idea or a request
+description: Something Budd could do, or do differently.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What you're trying to do
+      description: The problem first, before any solution.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help

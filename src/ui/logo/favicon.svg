@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Budd">
+  <title>Budd</title>
+  <rect width="64" height="64" rx="14" fill="#2557d6"/>
+  <g transform="translate(-49.74 15.18) scale(0.56)" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="122" cy="40" r="16"/>
+    <circle cx="170" cy="40" r="16"/>
+    <path d="M138 56V4H175L186 17V56"/>
+  </g>
+</svg>

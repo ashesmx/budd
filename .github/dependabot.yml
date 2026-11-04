@@ -1,0 +1,36 @@
+# Version updates wait two weeks after a release (ARCHITECTURE.md: every pin is
+# at least two weeks old). Security updates ignore the cooldown and come at once.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 14
+    groups:
+      patches-and-minors:
+        update-types: [minor, patch]
+    ignore:
+      # Its major version follows Node's; move with the Docker image's LTS line.
+      - dependency-name: '@types/node'
+        update-types: [version-update:semver-major]
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 14
+    ignore:
+      # Stay on the LTS line; move to the next one deliberately.
+      - dependency-name: node
+        update-types: [version-update:semver-major]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 14
