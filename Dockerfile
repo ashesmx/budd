@@ -1,7 +1,7 @@
 # Docker runs Budd in hosted mode only (see docs/adr/0002-docker-is-hosted-mode-only.md).
 
 # Pinned by digest so a re-pushed tag can't change what gets built; update both together.
-FROM node:24.22.1-bookworm-slim@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205 AS build
+FROM node:24.22.2-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9 AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 # No install scripts run: better-sqlite3 ships prebuilt binaries in its npm package.
@@ -13,7 +13,7 @@ RUN npm run build && npm prune --omit=dev \
  && cd node_modules/better-sqlite3 && rm -rf deps src binding.gyp build \
  && find prebuilds -type f ! -name "linux-$(node -p process.arch).node" -delete
 
-FROM node:24.22.1-bookworm-slim@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205
+FROM node:24.22.2-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9
 ENV NODE_ENV=production \
     BUDD_MODE=hosted \
     HOST=0.0.0.0 \
